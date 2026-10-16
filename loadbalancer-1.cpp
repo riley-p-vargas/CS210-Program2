@@ -2,6 +2,9 @@
  *
  * Manage the CPU load by assigning next job to CPU with the least load
  */
+/* riley vargas
+ * CS210-05
+ */
 
 #include "loadbalancer.h"
 

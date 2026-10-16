@@ -1,3 +1,6 @@
+/* riley vargas
+ * CS210-05
+ */
 // request.h
 #ifndef REQUEST_H
 #define REQUEST_H
