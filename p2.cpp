@@ -33,5 +33,36 @@ int main() {
 
     loadbalancer lb;
 
-}
+    for (int i = 0; i < 10; ++i) {
+        request r = createRandomRequest();
+        lb.addRequest(r);
+    }
 
+    webserver webarray[NUM_SERVERS];
+    for (int i = 0; i < NUM_SERVERS; ++i) {
+        webserver w((char) (i + 65));
+        webarray[i] = w;
+        webarray[i].addRequest(lb.getRequest(),lb.getTime());
+    }
+
+    while (lb.getTime() < 10000) {
+        int currTime = lb. getTime();
+        int size = lb.getSize();
+        // check each webserver if it's done
+        if(webarray[currTime % NUM_SERVERS].isRequestDone(currTime)){
+            request r = webarray[currTime % NUM_SERVERS].getRequest();
+            //print
+            cout << "Finished at " << currTime <<webarray [currTime % NUM_SERVERS].getName();
+            cout << "pid" << r.pid << "/" << size << "process time was" << r.processTime;
+            cout << "processed request from " << r.source << r.destination;
+            cout << endl;
+
+            webarray[currTime % NUM_SERVERS].addRequest(lb.getRequest(),currTime);
+        }
+        if (rand() % 10 == 0) {
+            request r = (createRandomRequest());
+            lb.addRequest(r);
+        }
+        lb.incTime();
+    }
+}
