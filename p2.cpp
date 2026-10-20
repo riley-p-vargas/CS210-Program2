@@ -7,6 +7,7 @@
 #include "loadbalancer.h"
 #include "request.h"
 #include "webserver.cpp"
+#include "loadbalancer.cpp"
 
 #include <iostream>
 #include <ctime>
@@ -53,8 +54,8 @@ int main() {
             request r = webarray[currTime % NUM_SERVERS].getRequest();
             //print
             cout << "Finished at " << currTime <<webarray [currTime % NUM_SERVERS].getName();
-            cout << "pid" << r.pid << "/" << size << "process time was" << r.processTime;
-            cout << "processed request from " << r.source << r.destination;
+            cout << " pid " << r.pid << " / " << size << " process time was " << r.processTime;
+            cout << " processed request from " << r.source << r.destination;
             cout << endl;
 
             webarray[currTime % NUM_SERVERS].addRequest(lb.getRequest(),currTime);
