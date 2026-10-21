@@ -66,4 +66,5 @@ int main() {
         }
         lb.incTime();
     }
+    cout << "done " << endl;
 }
